@@ -1,5 +1,7 @@
 import AppLogo from '@/app/ui/AppLogo'
+import { PersonIcon } from '@radix-ui/react-icons'
 import CategoriesMenu from 'app/ui/page-nav/CategoriesMenu'
+import { Button } from 'components/ui/button'
 import process from 'node:process'
 
 export default function PageNav() {
@@ -9,5 +11,8 @@ export default function PageNav() {
       <AppLogo/>
       <h2 className={`text-lg`}>{process.env.APP_NAME}</h2>
     </div>
+    <Button variant="ghost" size="icon">
+      <PersonIcon/>
+    </Button>
   </div>
 }
