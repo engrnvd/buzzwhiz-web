@@ -2,6 +2,7 @@ import PageNav from 'app/ui/components/page-nav/PageNav'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import * as process from 'node:process'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -15,7 +16,10 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'BuzzWhiz News',
+  title: {
+    template: `%s | ${process.env.APP_NAME}`,
+    default: process.env.APP_NAME as string,
+  },
   description: 'News aggregator website',
 }
 
