@@ -1,4 +1,4 @@
-import { fetchNewsFeed } from 'app/data/fetch-news-feed'
+import { fetchNewsFeed } from 'app/lib/data'
 
 export default async function NewsListing() {
   const feed = await fetchNewsFeed()

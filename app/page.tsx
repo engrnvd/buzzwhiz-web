@@ -1,5 +1,5 @@
-import Loading from 'app/ui/components/Loading'
-import NewsListing from 'app/ui/components/news-feed/NewsListing'
+import Loading from 'app/ui/Loading'
+import NewsListing from 'app/ui/news-feed/NewsListing'
 import process from 'node:process'
 import { Suspense } from 'react'
 

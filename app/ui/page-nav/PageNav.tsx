@@ -1,8 +1,10 @@
-import AppLogo from '@/app/ui/components/AppLogo'
+import AppLogo from '@/app/ui/AppLogo'
+import CategoriesMenu from 'app/ui/page-nav/CategoriesMenu'
 import process from 'node:process'
 
 export default function PageNav() {
   return <div className={`flex justify-between items-center space-x-2 px-4 py-2 border-b`}>
+    <CategoriesMenu/>
     <div className="flex items-center space-x-2">
       <AppLogo/>
       <h2 className={`text-lg`}>{process.env.APP_NAME}</h2>

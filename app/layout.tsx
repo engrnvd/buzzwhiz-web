@@ -1,4 +1,4 @@
-import PageNav from 'app/ui/components/page-nav/PageNav'
+import PageNav from 'app/ui/page-nav/PageNav'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
