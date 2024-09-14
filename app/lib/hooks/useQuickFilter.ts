@@ -5,8 +5,8 @@ export function useQuickSearchFilter(param: string) {
   const path = usePathname()
   const searchParams = useSearchParams()
 
-  return (currentValue: string) => {
-    const params = new URLSearchParams(searchParams)
+  return (currentValue: string, params?: URLSearchParams) => {
+    if (!params) params = new URLSearchParams(searchParams)
 
     if (currentValue) params.set(param, currentValue)
     else params.delete(param)
