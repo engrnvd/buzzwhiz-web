@@ -23,3 +23,13 @@ export type NewsArticle = {
   categories: NewsCategory[];
   source: NewsSource;
 }
+
+export type NewsFeedResponse = {
+  data: NewsArticle[];
+  path: string, // "http://localhost:82/api/news-feed"
+  per_page: number, // 50,
+  next_cursor: string, //  "eyJwdWJsaXNoZWRfYXQ...",
+  next_page_url: string, // "http://localhost:82/api/news-feed?cursor=eyJwdWJ...",
+  prev_cursor: null | string,
+  prev_page_url: null | string,
+}

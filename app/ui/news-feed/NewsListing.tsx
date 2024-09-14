@@ -1,15 +1,34 @@
-import { fetchNewsFeed } from 'app/lib/data'
-import { NewsArticle } from 'app/lib/types'
-import NewsArticleCard, { NewsArticleCardSkeleton } from 'app/ui/NewsArticleCard'
+'use client'
 
-export default async function NewsListing() {
-  const feed = await fetchNewsFeed()
+import { fetchNewsFeed } from 'app/lib/data'
+import { useLoadMore } from 'app/lib/hooks/useLoadMore'
+import { NewsArticle, NewsFeedResponse } from 'app/lib/types'
+import NewsArticleCard, { NewsArticleCardSkeleton } from 'app/ui/NewsArticleCard'
+import { useState } from 'react'
+
+export default function NewsListing({ feed }: { feed: NewsFeedResponse }) {
+  const [data, setData] = useState<NewsArticle[]>(feed.data)
+  const [cursor, setCursor] = useState<string>(feed.next_cursor)
+
+  const loadMore = async () => {
+    const newFeed = await fetchNewsFeed(cursor)
+    setData([...data, ...newFeed.data])
+    setCursor(newFeed.next_cursor)
+  }
+
+  const ref = useLoadMore(loadMore)
 
   return (
-    feed.data?.map((article: NewsArticle) => (<NewsArticleCard
-      article={article}
-      key={article.id}
-    />))
+    <>
+      {
+        data?.map((article: NewsArticle) => (<NewsArticleCard
+          article={article}
+          key={article.id}
+        />))
+      }
+
+      {data?.length && cursor && <NewsArticleCardSkeleton ref={ref}/>}
+    </>
   )
 }
 

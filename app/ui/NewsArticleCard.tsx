@@ -3,6 +3,7 @@ import type { NewsArticle } from 'app/lib/types'
 import WebsiteFavicon from 'app/ui/WebsiteFavicon'
 import { Skeleton } from 'components/ui/skeleton'
 import Link from 'next/link'
+import { forwardRef } from 'react'
 
 export default function NewsArticleCard({ article }: {
   article: NewsArticle;
@@ -20,7 +21,9 @@ export default function NewsArticleCard({ article }: {
         </Link>
         <p className="text-muted-foreground mb-3 text-sm">{article.description}</p>
         <div className="text-xs text-muted-foreground flex items-center justify-between">
-          <span>{dayjs(article.published_at).fromNow()}</span>
+          <div>
+            <div>{dayjs(article.published_at).fromNow()} by {article.author}</div>
+          </div>
           <WebsiteFavicon website={article.source.website} alt={article.source.name}/>
         </div>
       </div>
@@ -28,9 +31,9 @@ export default function NewsArticleCard({ article }: {
   )
 }
 
-export function NewsArticleCardSkeleton() {
+export const NewsArticleCardSkeleton = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div className="rounded shadow-sm border mb-3 last:mb-0">
+    <div className="rounded shadow-sm border mb-3 last:mb-0" ref={ref}>
       <Skeleton className="rounded-t rounded-b-none w-full h-64"></Skeleton>
       <div className="p-4">
         <Skeleton className="w-3/4 h-8 rounded my-2"></Skeleton>
@@ -38,4 +41,5 @@ export function NewsArticleCardSkeleton() {
       </div>
     </div>
   )
-}
+})
+NewsArticleCardSkeleton.displayName = 'NewsArticleCardSkeleton'

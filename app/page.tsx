@@ -1,12 +1,12 @@
-import NewsListing, { NewsListingSkeleton } from 'app/ui/news-feed/NewsListing'
-import { Suspense } from 'react'
+import { fetchNewsFeed } from 'app/lib/data'
+import NewsListing from 'app/ui/news-feed/NewsListing'
 
-export default function Page() {
+export default async function Page() {
+  const feed = await fetchNewsFeed()
+
   return (
     <div className="p-4">
-      <Suspense fallback={<NewsListingSkeleton/>}>
-        <NewsListing/>
-      </Suspense>
+      <NewsListing feed={feed}/>
     </div>
   )
 }
