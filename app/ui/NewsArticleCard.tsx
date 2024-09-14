@@ -20,13 +20,16 @@ export default function NewsArticleCard({ article }: {
           <h2 className="text-xl font-bold tracking-tight my-2">{article.title}</h2>
         </Link>
         <p className="text-muted-foreground mb-3 text-sm">{article.description}</p>
-        <div className="text-xs text-muted-foreground flex items-center justify-between">
+        <div className="text-xs text-muted-foreground flex items-center justify-between mb-3">
           <div>
             <div>{dayjs(article.published_at).fromNow()} by {article.author}</div>
           </div>
           <WebsiteFavicon website={article.source.website} alt={article.source.name}/>
         </div>
-        <div>{article.categories.map((category) => (<div key={category.id}>{category.name}</div>))}</div>
+        <div className="flex items-center flex-wrap gap-2">{article.categories.map((category) => (
+          <div className="text-xs text-muted-foreground bg-muted rounded px-2 py-1"
+               key={category.id}>{category.name}</div>
+        ))}</div>
       </div>
     </article>
   )
