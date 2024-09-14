@@ -1,6 +1,6 @@
 import { fetchNewsFeed } from 'app/lib/data'
 import { NewsArticle } from 'app/lib/types'
-import NewsArticleCard from 'app/ui/NewsArticleCard'
+import NewsArticleCard, { NewsArticleCardSkeleton } from 'app/ui/NewsArticleCard'
 
 export default async function NewsListing() {
   const feed = await fetchNewsFeed()
@@ -11,4 +11,8 @@ export default async function NewsListing() {
       key={article.id}
     />))
   )
+}
+
+export function NewsListingSkeleton() {
+  return [1, 2].map(i => (<NewsArticleCardSkeleton key={i}/>))
 }
