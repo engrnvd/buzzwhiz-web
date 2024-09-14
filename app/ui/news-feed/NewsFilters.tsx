@@ -16,7 +16,7 @@ export default async function NewsFilters(
   return (
     <Accordion type="single" defaultValue={open ? 'opened' : ''} collapsible className="mb-4 border rounded px-4">
       <AccordionItem value="opened" className="border-b-0">
-        <AccordionTrigger>Filters</AccordionTrigger>
+        <AccordionTrigger className="py-3">Filter News</AccordionTrigger>
         <AccordionContent className="flex flex-col space-y-2">
           <SourceSelector sources={sources}/>
           <DateFilter/>
