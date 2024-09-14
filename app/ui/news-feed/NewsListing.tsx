@@ -1,8 +1,14 @@
 import { fetchNewsFeed } from 'app/lib/data'
+import { NewsArticle } from 'app/lib/types'
+import NewsArticleCard from 'app/ui/NewsArticleCard'
 
 export default async function NewsListing() {
   const feed = await fetchNewsFeed()
-  console.log('feed', feed)
 
-  return <pre>Feed: {JSON.stringify(feed, null, 2)}</pre>
+  return (
+    feed.data?.map((article: NewsArticle) => (<NewsArticleCard
+      article={article}
+      key={article.id}
+    />))
+  )
 }

@@ -1,4 +1,5 @@
 import PageNav from 'app/ui/page-nav/PageNav'
+import TodaysDate from 'app/ui/TodaysDate'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -36,6 +37,7 @@ export default function RootLayout(
     >
     <div className="flex flex-col min-h-screen">
       <PageNav/>
+      <TodaysDate/>
       <main className="flex flex-col flex-grow w-full">
         {children}
       </main>

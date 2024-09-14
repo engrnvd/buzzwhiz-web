@@ -7,5 +7,5 @@ export const fetchData = (url: string) => {
 }
 
 export const fetchNewsFeed = () => fetchData('/api/news-feed')
-
 export const fetchNewsCategories = () => fetchData('/api/news-categories')
+export const fetchBreakingNews = () => fetchData('/api/breaking-news')
