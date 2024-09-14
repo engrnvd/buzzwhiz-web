@@ -5,7 +5,7 @@ import { useLoadMore } from 'app/lib/hooks/useLoadMore'
 import { NewsArticle, NewsFeedResponse } from 'app/lib/types'
 import NewsArticleCard, { NewsArticleCardSkeleton } from 'app/ui/NewsArticleCard'
 import { useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function NewsListing({ feed }: { feed: NewsFeedResponse }) {
   const [data, setData] = useState<NewsArticle[]>(feed.data)
@@ -16,9 +16,16 @@ export default function NewsListing({ feed }: { feed: NewsFeedResponse }) {
     const params = new URLSearchParams(searchParams)
     params.set('cursor', cursor)
     const newFeed = await fetchNewsFeed(params)
-    setData([...data, ...newFeed.data])
-    setCursor(newFeed.next_cursor)
+    if (newFeed.next_cursor !== feed.next_cursor) {
+      setData([...data, ...newFeed.data])
+      setCursor(newFeed.next_cursor)
+    }
   }
+
+  useEffect(() => {
+    setData(feed.data)
+    setCursor(feed.next_cursor)
+  }, [feed])
 
   const ref = useLoadMore(loadMore)
 

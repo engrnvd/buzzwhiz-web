@@ -2,12 +2,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from '@
 import { fetchNewsSources } from 'app/lib/data'
 import { SourceSelector } from 'app/ui/news-feed/SourceSelector'
 
-export default async function NewsFilters() {
+export default async function NewsFilters({ searchParams }: { searchParams: { source: string } }) {
   const sources = await fetchNewsSources()
+  const open = searchParams.source
 
   return (
-    <Accordion type="single" collapsible className="mb-4 border rounded px-4">
-      <AccordionItem value="item-1" className="border-b-0">
+    <Accordion type="single" defaultValue={open ? 'opened' : ''} collapsible className="mb-4 border rounded px-4">
+      <AccordionItem value="opened" className="border-b-0">
         <AccordionTrigger>Filters</AccordionTrigger>
         <AccordionContent>
           <SourceSelector sources={sources}/>
