@@ -1,12 +1,14 @@
 export type NewsSource = {
-  id: number;
+  id: string;
   name: string;
+  slug: string;
   website: string;
 }
 
 export type NewsCategory = {
   id: number;
   name: string;
+  slug: string;
   parent_id?: number;
   categories?: NewsCategory[];
 }
