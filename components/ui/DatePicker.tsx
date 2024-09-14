@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import * as React from 'react'
+import { useState } from 'react'
 
 export function DatePicker(
   {
@@ -20,14 +21,16 @@ export function DatePicker(
   },
 ) {
   const [date, setDate] = React.useState<Date | undefined>(initialDate)
+  const [open, setOpen] = useState<boolean>(false)
 
   const update = (date: Date | undefined) => {
     setDate(date)
     onChange?.(date)
+    setOpen(false)
   }
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant={'outline'}

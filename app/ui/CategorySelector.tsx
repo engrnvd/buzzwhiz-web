@@ -44,9 +44,9 @@ export default function CategorySelector({ categories }: { categories: NewsCateg
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <Sheet open={open}>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button size="icon" variant="ghost" onClick={e => setOpen(true)}>
+        <Button size="icon" variant="ghost" onClick={() => setOpen(true)}>
           <HamburgerMenuIcon/>
         </Button>
       </SheetTrigger>
