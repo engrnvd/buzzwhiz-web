@@ -7,11 +7,11 @@ export default async function NewsFilters(
   {
     searchParams
   }: {
-    searchParams: { source: string }
+    searchParams: { source: string, date: string }
   }
 ) {
   const sources = await fetchNewsSources()
-  const open = searchParams.source
+  const open = searchParams.source || searchParams.date
 
   return (
     <Accordion type="single" defaultValue={open ? 'opened' : ''} collapsible className="mb-4 border rounded px-4">
