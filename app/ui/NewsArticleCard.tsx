@@ -26,6 +26,7 @@ export default function NewsArticleCard({ article }: {
           </div>
           <WebsiteFavicon website={article.source.website} alt={article.source.name}/>
         </div>
+        <div>{article.categories.map((category) => (<div key={category.id}>{category.name}</div>))}</div>
       </div>
     </article>
   )

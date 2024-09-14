@@ -5,27 +5,22 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger, } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import { useQuickSearchFilter } from 'app/lib/hooks/useQuickFilter'
 import { NewsSource } from 'app/lib/types'
 import { CloseIcon } from 'next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 export function SourceSelector({ sources }: { sources: NewsSource[] }) {
-  const router = useRouter()
-  const path = usePathname()
-  const searchParams = useSearchParams()
   const [open, setOpen] = useState(false)
+  const searchParams = useSearchParams()
   const value = searchParams.get('source')
+
+  const onChange = useQuickSearchFilter('source')
 
   const onSelect = (currentValue: string) => {
     setOpen(false)
-
-    const params = new URLSearchParams(searchParams)
-
-    if (currentValue) params.set('source', currentValue)
-    else params.delete('source')
-
-    return router.replace(`${path}?${params.toString()}`)
+    onChange(currentValue)
   }
 
   return (

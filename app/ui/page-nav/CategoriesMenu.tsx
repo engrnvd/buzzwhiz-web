@@ -1,10 +1,11 @@
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger, } from '@/components/ui/sheet'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
-import CategorySelector, { CategoriesSkeleton } from 'app/ui/CategorySelector'
+import { fetchNewsCategories } from 'app/lib/data'
+import CategorySelector from 'app/ui/CategorySelector'
 import { Button } from 'components/ui/button'
-import { Suspense } from 'react'
 
-export default function CategoriesMenu() {
+export default async function CategoriesMenu() {
+  const categories = await fetchNewsCategories()
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -15,9 +16,7 @@ export default function CategoriesMenu() {
       <SheetContent side="left" className="bg-background overflow-y-auto">
         <SheetTitle className="sr-only">News Categories</SheetTitle>
         <SheetDescription className="sr-only">News categories</SheetDescription>
-        <Suspense fallback={<CategoriesSkeleton/>}>
-          <CategorySelector/>
-        </Suspense>
+        <CategorySelector categories={categories}/>
       </SheetContent>
     </Sheet>
   )
