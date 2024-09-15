@@ -21,6 +21,14 @@ const Login = () => {
   const [errors, setErrors] = useState<string[]>([])
   const [status, setStatus] = useState<string | null>('')
 
+  useEffect(() => {
+    if (reset?.length > 0 && Object.keys(errors).length === 0) {
+      setStatus(atob(reset))
+    } else {
+      setStatus(null)
+    }
+  }, [reset, errors])
+
   const submitForm = async (event: FormEvent) => {
     event.preventDefault()
 
