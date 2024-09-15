@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuickSearchFilter } from 'app/lib/hooks/useQuickFilter'
+import { useQuickSearchFilter } from 'lib/hooks/useQuickFilter'
 import { SearchIcon } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'

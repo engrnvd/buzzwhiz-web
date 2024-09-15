@@ -1,4 +1,4 @@
-import { NewsListingSkeleton } from 'app/ui/news-feed/NewsListing'
+import { NewsListingSkeleton } from 'components/news-feed/NewsListing'
 
 export default function loading() {
   return (

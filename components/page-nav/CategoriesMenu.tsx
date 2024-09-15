@@ -1,5 +1,5 @@
-import { fetchNewsCategories } from 'app/lib/data'
-import CategorySelector from 'app/ui/CategorySelector'
+import { fetchNewsCategories } from 'lib/data'
+import CategorySelector from 'components/CategorySelector'
 
 export default async function CategoriesMenu() {
   const categories = await fetchNewsCategories()

@@ -1,7 +1,7 @@
-import { fetchNewsFeed } from 'app/lib/data'
-import NewsFilters from 'app/ui/news-feed/NewsFilters'
-import NewsListing from 'app/ui/news-feed/NewsListing'
-import Search from 'app/ui/news-feed/Search'
+import NewsFilters from 'components/news-feed/NewsFilters'
+import NewsListing from 'components/news-feed/NewsListing'
+import Search from 'components/news-feed/Search'
+import { fetchNewsFeed } from 'lib/data'
 
 export default async function Page({ searchParams }: { searchParams: { source: string, date: string } }) {
   const feed = await fetchNewsFeed(new URLSearchParams(searchParams))

@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from '@/components/ui/accordion'
-import { fetchNewsSources } from 'app/lib/data'
-import DateFilter from 'app/ui/news-feed/DateFilter'
-import { SourceSelector } from 'app/ui/news-feed/SourceSelector'
+import { fetchNewsSources } from 'lib/data'
+import DateFilter from 'components/news-feed/DateFilter'
+import { SourceSelector } from 'components/news-feed/SourceSelector'
 
 export default async function NewsFilters(
   {

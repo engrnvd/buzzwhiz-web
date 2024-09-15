@@ -1,20 +1,9 @@
-import PageNav from 'app/ui/page-nav/PageNav'
-import TodaysDate from 'app/ui/TodaysDate'
+import { inter } from 'app/fonts'
+import PageNav from 'components/page-nav/PageNav'
+import TodaysDate from 'components/TodaysDate'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 import './globals.css'
 import * as process from 'node:process'
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -32,9 +21,7 @@ export default function RootLayout(
   }>) {
   return (
     <html lang="en">
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
+    <body className={`${inter.className} antialiased`}>
     <div className="flex flex-col min-h-screen">
       <PageNav/>
       <TodaysDate/>

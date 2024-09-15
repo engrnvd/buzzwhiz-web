@@ -1,9 +1,9 @@
 'use client'
 
-import { fetchNewsFeed } from 'app/lib/data'
-import { useLoadMore } from 'app/lib/hooks/useLoadMore'
-import { NewsArticle, NewsFeedResponse } from 'app/lib/types'
-import NewsArticleCard, { NewsArticleCardSkeleton } from 'app/ui/NewsArticleCard'
+import { fetchNewsFeed } from 'lib/data'
+import { useLoadMore } from 'lib/hooks/useLoadMore'
+import { NewsArticle, NewsFeedResponse } from 'lib/types'
+import NewsArticleCard, { NewsArticleCardSkeleton } from 'components/NewsArticleCard'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 

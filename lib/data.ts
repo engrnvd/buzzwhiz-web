@@ -1,5 +1,5 @@
-import axios from 'app/lib/axios'
-import { NewsFeedResponse } from 'app/lib/types'
+import axios from 'lib/axios'
+import { NewsFeedResponse } from 'lib/types'
 
 export const fetchData = (url: string) => {
   return axios.get(url)

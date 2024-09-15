@@ -1,6 +1,6 @@
-import AppLogo from '@/app/ui/AppLogo'
+import AppLogo from '@/components/AppLogo'
 import { PersonIcon } from '@radix-ui/react-icons'
-import CategoriesMenu from 'app/ui/page-nav/CategoriesMenu'
+import CategoriesMenu from 'components/page-nav/CategoriesMenu'
 import { Button } from 'components/ui/button'
 import Link from 'next/link'
 import process from 'node:process'

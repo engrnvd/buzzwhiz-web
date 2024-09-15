@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuickSearchFilter } from 'app/lib/hooks/useQuickFilter'
+import { useQuickSearchFilter } from 'lib/hooks/useQuickFilter'
 import { Button } from 'components/ui/button'
 import { DatePicker } from 'components/ui/DatePicker'
 import { format, parse } from 'date-fns'
