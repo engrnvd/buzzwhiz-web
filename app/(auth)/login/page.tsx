@@ -36,7 +36,7 @@ const Login = () => {
   return (
     <>
       <AuthSessionStatus className="mb-4" status={status}/>
-      <form onSubmit={submitForm}>
+      <form onSubmit={submitForm} className="space-y-6">
         {/* Email Address */}
         <div>
           <Label htmlFor="email">Email</Label>
@@ -55,7 +55,7 @@ const Login = () => {
         </div>
 
         {/* Password */}
-        <div className="mt-4">
+        <div>
           <Label htmlFor="password">Password</Label>
 
           <Input
@@ -75,7 +75,7 @@ const Login = () => {
         </div>
 
         {/* Remember Me */}
-        <div className="block mt-4">
+        <div className="block">
           <label
             htmlFor="remember_me"
             className="inline-flex items-center">
@@ -83,27 +83,33 @@ const Login = () => {
               id="remember_me"
               type="checkbox"
               name="remember"
-              className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="rounded border text-indigo-600 shadow-sm focus:ring"
               onChange={event =>
                 setShouldRemember(event.target.checked)
               }
             />
 
-            <span className="ml-2 text-sm text-gray-600">
+            <span className="ml-2 text-sm text-muted-foreground">
               Remember me
             </span>
           </label>
         </div>
 
-        <div className="flex items-center justify-end mt-4">
+        <Button className="my-3 w-full">Login</Button>
+
+        <div className="flex items-center justify-between">
           <Link
             href="/forgot-password"
-            className="underline text-sm text-gray-600 hover:text-gray-900">
+            className="text-sm text-muted-foreground">
             Forgot your password?
           </Link>
-
-          <Button className="ml-3">Login</Button>
         </div>
+
+        <Link
+          href="/register"
+          className="block uppercase text-sm rounded py-2 px-4 text-center hover:bg-muted hover:no-underline">
+          Create a new account
+        </Link>
       </form>
     </>
   )

@@ -5,11 +5,13 @@ import useSWR from 'swr'
 
 type AuthMethodArgs = {
   setErrors: Dispatch<SetStateAction<string[]>>
-  setStatus: Dispatch<SetStateAction<string | null>>
+  setStatus?: Dispatch<SetStateAction<string | null>>
   props?: string[]
   email?: string
   password?: string
   remember?: boolean
+  name?: string
+  password_confirmation?: string | null
 }
 
 export const useAuth = (
@@ -57,7 +59,7 @@ export const useAuth = (
     await csrf()
 
     setErrors([])
-    setStatus(null)
+    setStatus?.(null)
 
     axios.post('/login', props)
       .then(() => mutate())
@@ -72,10 +74,10 @@ export const useAuth = (
     await csrf()
 
     setErrors([])
-    setStatus(null)
+    setStatus?.(null)
 
     axios.post('/forgot-password', { email })
-      .then(response => setStatus(response.data.status))
+      .then(response => setStatus?.(response.data.status))
       .catch(error => {
         if (error.response.status !== 422) throw error
 
@@ -87,7 +89,7 @@ export const useAuth = (
     await csrf()
 
     setErrors([])
-    setStatus(null)
+    setStatus?.(null)
 
     axios.post('/reset-password', { token: params.token, ...props })
       .then(response =>
@@ -102,7 +104,7 @@ export const useAuth = (
 
   const resendEmailVerification = ({ setStatus }: AuthMethodArgs) => {
     axios.post('/email/verification-notification')
-      .then(response => setStatus(response.data.status))
+      .then(response => setStatus?.(response.data.status))
   }
 
   const logout = async () => {
