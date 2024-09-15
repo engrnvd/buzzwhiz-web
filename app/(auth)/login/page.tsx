@@ -5,11 +5,14 @@ import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
 import { Button } from '@/components/ui/button'
-import { useAuth } from '@/lib/hooks/auth'
+import { AuthErrors, AuthStatus, useAuth } from '@/lib/hooks/auth'
 import Link from 'next/link'
-import { FormEvent, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { FormEvent, useEffect, useState } from 'react'
 
 const Login = () => {
+  const params = useSearchParams()
+  const reset = params.get('reset') || ''
   const { login } = useAuth({
     middleware: 'guest',
     redirectIfAuthenticated: '/dashboard',
@@ -18,8 +21,8 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [shouldRemember, setShouldRemember] = useState(false)
-  const [errors, setErrors] = useState<string[]>([])
-  const [status, setStatus] = useState<string | null>('')
+  const [errors, setErrors] = useState<AuthErrors>({})
+  const [status, setStatus] = useState<AuthStatus>('')
 
   useEffect(() => {
     if (reset?.length > 0 && Object.keys(errors).length === 0) {

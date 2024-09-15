@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 import useSWR from 'swr'
 
 type AuthMethodArgs = {
-  setErrors: Dispatch<SetStateAction<string[]>>
+  setErrors: Dispatch<SetStateAction<AuthErrors>>
   setStatus?: Dispatch<SetStateAction<string | null>>
   props?: string[]
   email?: string
@@ -13,6 +13,15 @@ type AuthMethodArgs = {
   name?: string
   password_confirmation?: string | null
 }
+
+export type AuthErrors = {
+  email?: string[]
+  password?: string[]
+  name?: string[]
+  password_confirmation?: string[]
+}
+
+export type AuthStatus = string | null
 
 export const useAuth = (
   {
@@ -44,7 +53,7 @@ export const useAuth = (
   const register = async ({ setErrors, ...props }: AuthMethodArgs) => {
     await csrf()
 
-    setErrors([])
+    setErrors({})
 
     axios.post('/register', props)
       .then(() => mutate())
@@ -58,7 +67,7 @@ export const useAuth = (
   const login = async ({ setErrors, setStatus, ...props }: AuthMethodArgs) => {
     await csrf()
 
-    setErrors([])
+    setErrors({})
     setStatus?.(null)
 
     axios.post('/login', props)
@@ -73,7 +82,7 @@ export const useAuth = (
   const forgotPassword = async ({ setErrors, setStatus, email }: AuthMethodArgs) => {
     await csrf()
 
-    setErrors([])
+    setErrors({})
     setStatus?.(null)
 
     axios.post('/forgot-password', { email })
@@ -88,7 +97,7 @@ export const useAuth = (
   const resetPassword = async ({ setErrors, setStatus, ...props }: AuthMethodArgs) => {
     await csrf()
 
-    setErrors([])
+    setErrors({})
     setStatus?.(null)
 
     axios.post('/reset-password', { token: params.token, ...props })

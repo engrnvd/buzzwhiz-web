@@ -3,7 +3,7 @@
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
-import { useAuth } from '@/lib/hooks/auth'
+import { AuthErrors, useAuth } from '@/lib/hooks/auth'
 import { Button } from 'components/ui/button'
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
@@ -18,7 +18,7 @@ const Page = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('')
-  const [errors, setErrors] = useState<string[]>([])
+  const [errors, setErrors] = useState<AuthErrors>({})
 
   const submitForm = (event: FormEvent) => {
     event.preventDefault()
