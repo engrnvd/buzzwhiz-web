@@ -10,9 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Button } from 'components/ui/button'
 import { useAuth } from 'lib/hooks/auth'
+import { useRouter } from 'next/navigation'
 
 export default function ProfileDropdown() {
   const auth = useAuth({})
+  const router = useRouter()
 
   return (
     <DropdownMenu>
@@ -30,7 +32,9 @@ export default function ProfileDropdown() {
 
         <DropdownMenuSeparator/>
 
-        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => router.push('/dashboard')}
+        >Dashboard</DropdownMenuItem>
 
         <DropdownMenuSeparator/>
 
