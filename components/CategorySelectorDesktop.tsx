@@ -34,7 +34,7 @@ export default function CategorySelectorDesktop({ categories, className }: Props
                             {
                               category.categories.map(subCat => (
                                 <div key={subCat.id}>
-                                  <NavigationMenuLink href={'/?' + subCat.slug}
+                                  <NavigationMenuLink href={'/?category=' + subCat.slug}
                                   >{subCat.name}</NavigationMenuLink>
                                 </div>
                               ))
@@ -44,7 +44,7 @@ export default function CategorySelectorDesktop({ categories, className }: Props
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={'/?' + category.slug} legacyBehavior passHref>
+                    <Link href={'/?category=' + category.slug} legacyBehavior passHref>
                       <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         {category.name}
                       </NavigationMenuLink>
