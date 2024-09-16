@@ -1,5 +1,6 @@
-import AuthorCard from 'components/AuthorCard'
+import { PersonIcon } from '@radix-ui/react-icons'
 import Search from 'components/Search'
+import UserItemCard from 'components/UserItemCard'
 import ViewMoreBtn from 'components/ViewMoreBtn'
 import { Author } from 'lib/types'
 import { HTMLAttributes, useMemo, useState } from 'react'
@@ -25,11 +26,13 @@ export default function AuthorCardWrapper({ items, favorites, toggleFavorite }: 
           filteredItems
             .slice(0, maxRecords)
             .map((item) => (
-              <AuthorCard
+              <UserItemCard
                 favorite={favorites.includes(+item.id)}
                 item={item}
                 key={item.id}
                 onToggled={toggleFavorite}
+                icon={<PersonIcon className="shrink-0"/>}
+                toggleUrl={`/api/user-authors/toggle/${item.id}`}
               />
             ))
         }

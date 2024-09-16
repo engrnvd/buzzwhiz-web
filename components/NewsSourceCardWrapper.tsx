@@ -1,6 +1,7 @@
-import NewsSourceCard from 'components/NewsSourceCard'
 import Search from 'components/Search'
+import UserItemCard from 'components/UserItemCard'
 import ViewMoreBtn from 'components/ViewMoreBtn'
+import WebsiteFavicon from 'components/WebsiteFavicon'
 import { NewsSource } from 'lib/types'
 import { HTMLAttributes, useMemo, useState } from 'react'
 
@@ -25,11 +26,13 @@ export default function NewsSourceCardWrapper({ sources, favorites, toggleFavori
           filteredItems
             .slice(0, maxRecords)
             .map((source) => (
-              <NewsSourceCard
+              <UserItemCard
                 favorite={favorites.includes(+source.id)}
-                source={source}
+                item={source}
                 key={source.id}
                 onToggled={toggleFavorite}
+                icon={<WebsiteFavicon website={source.website}/>}
+                toggleUrl={`/api/user-authors/toggle/${source.id}`}
               />
             ))
         }

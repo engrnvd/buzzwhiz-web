@@ -19,6 +19,8 @@ export type NewsCategory = {
   categories?: NewsCategory[];
 }
 
+export type UserItem = Author | NewsCategory | NewsSource
+
 export type NewsArticle = {
   id: number;
   title: string;
