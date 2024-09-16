@@ -14,7 +14,3 @@ export const fetchNewsFeed = (params?: URLSearchParams): Promise<NewsFeedRespons
 export const fetchNewsCategories = () => fetchData('/api/news-categories')
 export const fetchNewsSources = () => fetchData('/api/news-sources')
 export const fetchBreakingNews = () => fetchData('/api/breaking-news')
-export const fetchUserSources = () => fetchData('/api/user-sources')
-export const toggleSource = (id: string) => postData(`/api/user-sources/toggle/${id}`)
-export const fetchUserAuthors = () => fetchData('/api/user-authors')
-export const toggleAuthor = (id: string) => postData(`/api/user-authors/toggle/${id}`)
