@@ -1,9 +1,9 @@
 'use client'
 
+import NewsArticleCard, { NewsArticleCardSkeleton } from 'components/NewsArticleCard'
 import { fetchNewsFeed } from 'lib/data'
 import { useLoadMore } from 'lib/hooks/useLoadMore'
 import { NewsArticle, NewsFeedResponse } from 'lib/types'
-import NewsArticleCard, { NewsArticleCardSkeleton } from 'components/NewsArticleCard'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -23,9 +23,12 @@ export default function NewsListing({ feed }: { feed: NewsFeedResponse }) {
   }
 
   useEffect(() => {
-    setData(feed.data)
-    setCursor(feed.next_cursor)
-  }, [feed])
+    const params = new URLSearchParams(searchParams)
+    fetchNewsFeed(params).then(feed => {
+      setData(feed.data)
+      setCursor(feed.next_cursor)
+    })
+  }, [feed, searchParams])
 
   const ref = useLoadMore(loadMore)
 

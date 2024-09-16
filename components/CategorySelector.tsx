@@ -8,7 +8,7 @@ import { Skeleton } from 'components/ui/skeleton'
 import { useQuickSearchFilter } from 'lib/hooks/useQuickFilter'
 import { NewsCategory } from 'lib/types'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { MouseEvent, useState } from 'react'
 
 export function CategorySelectorItem(
@@ -40,8 +40,17 @@ export function CategorySelectorItem(
 }
 
 export default function CategorySelector({ categories }: { categories: NewsCategory[] }) {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const [open, setOpen] = useState<boolean>(false)
+
+  const openCategoryWithNoChildren = (e: MouseEvent, category: NewsCategory) => {
+    if (!category.categories?.length) {
+      e.preventDefault()
+      router.push('/?category=' + category.slug)
+      setOpen(false)
+    }
+  }
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -58,7 +67,7 @@ export default function CategorySelector({ categories }: { categories: NewsCateg
             {
               categories.map((category: NewsCategory) => (
                 <AccordionItem key={category.id} value={`${category.slug}`}>
-                  <AccordionTrigger>
+                  <AccordionTrigger onClick={e => openCategoryWithNoChildren(e, category)}>
                     {category.name}
                   </AccordionTrigger>
                   <AccordionContent>
