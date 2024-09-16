@@ -5,11 +5,12 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger, } from
 import { CheckIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Button } from 'components/ui/button'
 import { Skeleton } from 'components/ui/skeleton'
+import { useCategorySelector } from 'lib/hooks/useCategorySelector'
 import { useQuickSearchFilter } from 'lib/hooks/useQuickFilter'
 import { NewsCategory } from 'lib/types'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { MouseEvent, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { MouseEvent } from 'react'
 
 export function CategorySelectorItem(
   { category, parentCategory, onChange }: {
@@ -40,17 +41,8 @@ export function CategorySelectorItem(
 }
 
 export default function CategorySelector({ categories }: { categories: NewsCategory[] }) {
-  const router = useRouter()
   const searchParams = useSearchParams()
-  const [open, setOpen] = useState<boolean>(false)
-
-  const openCategoryWithNoChildren = (e: MouseEvent, category: NewsCategory) => {
-    if (!category.categories?.length) {
-      e.preventDefault()
-      router.push('/?category=' + category.slug)
-      setOpen(false)
-    }
-  }
+  const { open, setOpen, openCategoryWithNoChildren } = useCategorySelector()
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
