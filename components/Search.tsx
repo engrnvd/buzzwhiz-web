@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 export default function Search({ placeholder = 'Search', onSearch, defaultValue }: Props) {
   return (
-    <div className="relative flex flex-1 flex-shrink-0 max-w-96">
+    <div className="relative flex flex-1 flex-shrink-0">
       <label htmlFor="search" className="sr-only">
         Search
       </label>

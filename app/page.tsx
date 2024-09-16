@@ -8,7 +8,7 @@ export default async function Page({ searchParams }: { searchParams: { source: s
 
   return (
     <div className="p-4">
-      <div className="flex flex-col space-y-3 mb-3">
+      <div className="flex flex-col space-y-3 mb-3 max-w-96">
         <SearchNews placeholder="Search"/>
         <NewsFilters searchParams={searchParams}/>
       </div>

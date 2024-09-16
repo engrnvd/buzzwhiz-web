@@ -1,7 +1,7 @@
+import { Skeleton } from 'components/ui/skeleton'
+import WebsiteFavicon from 'components/WebsiteFavicon'
 import dayjs from 'lib/dayjs'
 import type { NewsArticle } from 'lib/types'
-import WebsiteFavicon from 'components/WebsiteFavicon'
-import { Skeleton } from 'components/ui/skeleton'
 import Link from 'next/link'
 import { forwardRef } from 'react'
 
@@ -9,7 +9,7 @@ export default function NewsArticleCard({ article }: {
   article: NewsArticle;
 }) {
   return (
-    <article className="rounded shadow-sm border mb-3 last:mb-0">
+    <article className="rounded shadow-sm border last:mb-0">
       <img
         src={article.img_url}
         alt={article.title}
