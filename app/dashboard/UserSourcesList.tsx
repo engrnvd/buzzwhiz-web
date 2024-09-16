@@ -22,7 +22,7 @@ export default function UserSourcesList() {
   }
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       <div>
         <SectionTitle>News sources you follow</SectionTitle>
         <NewsSourceCardWrapper

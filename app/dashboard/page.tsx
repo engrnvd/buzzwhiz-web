@@ -1,5 +1,5 @@
 import Header from '@/app/dashboard/Header'
-import UserSourcesList from 'app/dashboard/UserSourcesList'
+import UserSettingTabs from 'app/dashboard/UserSettingTabs'
 import Welcome from 'app/dashboard/Welcome'
 
 export const metadata = {
@@ -15,7 +15,7 @@ const Dashboard = async () => {
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 bg-white border-b border-gray-200">
               <Welcome className="mb-4"/>
-              <UserSourcesList/>
+              <UserSettingTabs defaultValue="sources"/>
             </div>
           </div>
         </div>
