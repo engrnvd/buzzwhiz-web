@@ -22,5 +22,6 @@ export function useUserItems(url: string) {
     items,
     favorites,
     toggleFavorite,
+    setFavorites,
   }
 }

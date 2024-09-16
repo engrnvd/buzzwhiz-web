@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 export default function UserCategoriesList(
   {}: Props
 ) {
-  const { favorites, items, toggleFavorite } = useUserItems('/api/user-categories')
+  const { favorites, items, setFavorites } = useUserItems('/api/user-categories')
 
   return (
     <div className="space-y-2">
@@ -19,16 +19,15 @@ export default function UserCategoriesList(
         {
           items.map((item) => (
             <NewsCategoryCard
+              categories={items}
               key={item.id}
               item={item}
               favorites={favorites}
-              toggleFavorite={toggleFavorite}
+              setFavorites={setFavorites}
             />
           ))
         }
       </Accordion>
-      <pre>{JSON.stringify(favorites)}</pre>
-      <pre>{JSON.stringify(items, null, 1)}</pre>
     </div>
   )
 }
