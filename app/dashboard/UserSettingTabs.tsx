@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { TabsProps } from '@radix-ui/react-tabs'
+import UserAuthorsList from 'app/dashboard/UserAuthorsList'
 import UserSourcesList from 'app/dashboard/UserSourcesList'
 
 interface Props extends TabsProps {
@@ -17,7 +18,9 @@ export default function UserSettingTabs(props: Props) {
         <UserSourcesList/>
       </TabsContent>
       <TabsContent value="categories">Change your password here.</TabsContent>
-      <TabsContent value="authors">Change your password here.</TabsContent>
+      <TabsContent value="authors">
+        <UserAuthorsList/>
+      </TabsContent>
     </Tabs>
 
   )
