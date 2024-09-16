@@ -1,3 +1,9 @@
+export type Author = {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 export type NewsSource = {
   id: string;
   name: string;
