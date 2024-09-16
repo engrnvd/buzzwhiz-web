@@ -1,6 +1,6 @@
 import NewsFilters from 'components/news-feed/NewsFilters'
 import NewsListing from 'components/news-feed/NewsListing'
-import Search from 'components/news-feed/Search'
+import SearchNews from 'components/news-feed/SearchNews'
 import { fetchNewsFeed } from 'lib/data'
 
 export default async function Page({ searchParams }: { searchParams: { source: string, date: string } }) {
@@ -9,7 +9,7 @@ export default async function Page({ searchParams }: { searchParams: { source: s
   return (
     <div className="p-4">
       <div className="flex flex-col space-y-3 mb-3">
-        <Search placeholder="Search"/>
+        <SearchNews placeholder="Search"/>
         <NewsFilters searchParams={searchParams}/>
       </div>
       <NewsListing feed={feed}/>

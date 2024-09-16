@@ -1,48 +1,44 @@
 'use client'
 
-import { CaretDownIcon } from '@radix-ui/react-icons'
-import NewsSourceCard from 'components/NewsSourceCard'
-import { Button } from 'components/ui/button'
+import NewsSourceCardWrapper from 'components/NewsSourceCardWrapper'
+import SectionTitle from 'components/SectionTitle'
 import { fetchUserSources } from 'lib/data'
 import { NewsSource } from 'lib/types'
 import { useEffect, useState } from 'react'
 
 export default function UserSourcesList() {
   const [sources, setSources] = useState<NewsSource[]>([])
-  const [favorites, setFavorites] = useState<string[]>([])
-  const [maxRecords, setMaxRecords] = useState(10)
+  const [favorites, setFavorites] = useState<number[]>([])
 
   useEffect(() => {
-    fetchUserSources().then((res: { sources: NewsSource[], favorites: string[] }) => {
+    fetchUserSources().then((res: { sources: NewsSource[], favorites: number[] }) => {
       setSources(res.sources)
       setFavorites(res.favorites)
     })
   }, [])
 
-  const toggleFavorite = (id: string) => {
-    if (favorites?.includes(id)) {
-      setFavorites(favorites.filter(i => i !== id))
-    } else {
-      setFavorites([...favorites, id])
-    }
+  const toggleFavorite = (id: number) => {
+    setFavorites(fvs => fvs.includes(id) ? fvs.filter(i => i !== id) : [...fvs, id])
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-      {sources.slice(0, maxRecords).map((source) => (
-        <NewsSourceCard
-          favorite={favorites.includes(source.id)}
-          source={source}
-          key={source.id}
-          onToggled={toggleFavorite}
+    <div className="space-y-5">
+      <div>
+        <SectionTitle>News sources you follow</SectionTitle>
+        <NewsSourceCardWrapper
+          sources={sources.filter(s => favorites.includes(+s.id))}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
         />
-      ))}
-      {
-        maxRecords < sources.length &&
-          <Button variant="ghost" onClick={() => setMaxRecords(m => m + 10)}>
-              View more <CaretDownIcon/>
-          </Button>
-      }
+      </div>
+      <div>
+        <SectionTitle>Explore more news sources</SectionTitle>
+        <NewsSourceCardWrapper
+          sources={sources.filter(s => !favorites.includes(+s.id))}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />
+      </div>
     </div>
   )
 }

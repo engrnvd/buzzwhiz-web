@@ -5,7 +5,7 @@ import { SearchIcon } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 
-export default function Search({ placeholder }: { placeholder: string }) {
+export default function SearchNews({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams()
   const updateParams = useQuickSearchFilter('query')
   const handleSearch = useDebouncedCallback(updateParams, 300)

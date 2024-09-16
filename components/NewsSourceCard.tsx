@@ -9,14 +9,14 @@ import { HTMLAttributes } from 'react'
 interface Props extends HTMLAttributes<HTMLDivElement> {
   source: NewsSource,
   favorite: boolean,
-  onToggled: (id: string) => void,
+  onToggled: (id: number) => void,
 }
 
 export default function NewsSourceCard({ source, favorite, className, onToggled }: Props) {
   const toggle = () => {
-    onToggled(source.id)
-    toggleSource(source.id).catch((e) => {
-      onToggled(source.id) // if request fails, rollback
+    onToggled(+source.id)
+    toggleSource(source.id).catch(() => {
+      onToggled(+source.id) // if request fails, rollback
     })
   }
 
