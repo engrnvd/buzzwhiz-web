@@ -31,14 +31,14 @@ export default function UserItemCard(
   }
 
   return (
-    <div className={cn('px-4 py-2 border rounded-lg w-full', className)}>
-      <div className="flex items-center space-x-2">
-        {icon}
-        <h3 className="font-bold text-sm flex-grow">{item.name}</h3>
-        <Button className="shrink-0" variant="ghost" size="icon" onClick={toggle}>
+    <div className={cn('px-4 py-2 border rounded-lg w-full flex items-center space-x-2', className)}>
+      {icon}
+      <h3 className="font-bold text-sm flex-grow">{item.name}</h3>
+      <Button asChild className="shrink-0" variant="ghost" size="icon" onClick={toggle}>
+        <div className="size-6 cursor-pointer">
           {favorite ? <HeartFilledIcon className="text-red-800"/> : <HeartIcon/>}
-        </Button>
-      </div>
+        </div>
+      </Button>
     </div>
   )
 }
