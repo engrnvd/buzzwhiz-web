@@ -1,9 +1,9 @@
 'use client'
 
 import UserItemCardWrapper from 'components/UserItemCardWrapper'
-import { fetchData } from 'lib/data'
+import { useUserItems } from 'lib/hooks/useUserItems'
 import { UserItem } from 'lib/types'
-import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   url: string,
@@ -18,20 +18,7 @@ export default function UserItemsList(
     title,
   }: Props
 ) {
-  const [items, setItems] = useState<UserItem[]>([])
-  const [favorites, setFavorites] = useState<number[]>([])
-
-  useEffect(() => {
-    if (!url) return
-    fetchData(url).then((res: { items: UserItem[], favorites: number[] }) => {
-      setItems(res.items)
-      setFavorites(res.favorites)
-    })
-  }, [url])
-
-  const toggleFavorite = (id: number) => {
-    setFavorites(fvs => fvs.includes(id) ? fvs.filter(i => i !== id) : [...fvs, id])
-  }
+  const { favorites, items, toggleFavorite } = useUserItems(url)
 
   return (
     <div className="space-y-6">

@@ -5,7 +5,7 @@ import { UserItem } from 'lib/types'
 import { cn } from 'lib/utils'
 import { HTMLAttributes, ReactNode } from 'react'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface UserItemCardProps extends HTMLAttributes<HTMLDivElement> {
   item: UserItem,
   favorite: boolean,
   onToggled: (id: number) => void,
@@ -21,7 +21,7 @@ export default function UserItemCard(
     onToggled,
     toggleUrl,
     icon,
-  }: Props
+  }: UserItemCardProps
 ) {
   const toggle = () => {
     onToggled(+item.id)

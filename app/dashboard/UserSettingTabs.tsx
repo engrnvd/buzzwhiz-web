@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PersonIcon } from '@radix-ui/react-icons'
 import { TabsProps } from '@radix-ui/react-tabs'
+import UserCategoriesList from 'app/dashboard/UserCategoriesList'
 import UserItemsList from 'app/dashboard/UserItemsList'
 import WebsiteFavicon from 'components/WebsiteFavicon'
 
@@ -24,8 +25,10 @@ export default function UserSettingTabs(props: Props) {
           icon={i => <WebsiteFavicon website={i.website}/>}
         />
       </TabsContent>
-      <TabsContent value="categories">Change your password here.</TabsContent>
-      <TabsContent value="authors">
+      <TabsContent value="categories" className="py-6">
+        <UserCategoriesList/>
+      </TabsContent>
+      <TabsContent value="authors" className="py-6">
         <UserItemsList
           title="Authors"
           url="/api/user-authors"
