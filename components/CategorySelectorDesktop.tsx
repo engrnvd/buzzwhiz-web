@@ -1,3 +1,5 @@
+'use client'
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,18 +10,24 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { NavigationMenuProps } from '@radix-ui/react-navigation-menu'
+import ScrollBtn from 'components/ScrollBtn'
 import { NewsCategory } from 'lib/types'
 import { cn } from 'lib/utils'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 interface Props extends NavigationMenuProps {
   categories: NewsCategory[]
 }
 
 export default function CategorySelectorDesktop({ categories, className }: Props) {
+  const listRef = useRef<HTMLUListElement>(null)
+
   return (
     <NavigationMenu className={cn(className)}>
-      <NavigationMenuList className="overflow-x-auto w-[98vw] max-w-[1217px] justify-start py-3">
+      <NavigationMenuList
+        ref={listRef}
+        className="overflow-x-hidden w-[98vw] max-w-[1217px] justify-start py-3 scroll-smooth">
         {
           categories.map((category) => (
             <NavigationMenuItem key={category.id}>
@@ -54,6 +62,7 @@ export default function CategorySelectorDesktop({ categories, className }: Props
             </NavigationMenuItem>
           ))
         }
+        <ScrollBtn parentRef={listRef}/>
       </NavigationMenuList>
     </NavigationMenu>
   )
