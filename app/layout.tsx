@@ -1,6 +1,5 @@
 import { inter } from 'app/fonts'
 import PageNav from 'components/page-nav/PageNav'
-import TodaysDate from 'components/TodaysDate'
 import type { Metadata } from 'next'
 import './globals.css'
 import * as process from 'node:process'
@@ -24,7 +23,6 @@ export default function RootLayout(
     <body className={`${inter.className} antialiased`}>
     <div className="flex flex-col min-h-screen">
       <PageNav/>
-      <TodaysDate/>
       <main className="flex flex-col flex-grow w-full">
         {children}
       </main>

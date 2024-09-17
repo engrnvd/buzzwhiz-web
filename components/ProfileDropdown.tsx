@@ -19,7 +19,7 @@ export default function ProfileDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="text-purple-900 text-lg font-black" variant="outline" size="icon">
+        <Button className="text-purple-900 text-lg font-black rounded-full" variant="outline" size="icon">
           {auth.user.name[0]}
         </Button>
       </DropdownMenuTrigger>

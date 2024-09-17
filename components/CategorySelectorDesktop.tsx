@@ -19,7 +19,7 @@ interface Props extends NavigationMenuProps {
 export default function CategorySelectorDesktop({ categories, className }: Props) {
   return (
     <NavigationMenu className={cn(className)}>
-      <NavigationMenuList className="overflow-x-auto w-[98vw] justify-start px-[1vw]">
+      <NavigationMenuList className="overflow-x-auto w-[98vw] max-w-[1217px] justify-start py-3">
         {
           categories.map((category) => (
             <NavigationMenuItem key={category.id}>
@@ -29,7 +29,7 @@ export default function CategorySelectorDesktop({ categories, className }: Props
                     <>
                       <NavigationMenuTrigger>{category.name}</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <div className="w-[96vw] flex items-center justify-center p-8">
+                        <div className="w-[96vw] max-w-[1217px] flex items-center justify-center p-8">
                           <div className="w-96 grid grid-cols-2 gap-4">
                             {
                               category.categories.map(subCat => (

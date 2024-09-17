@@ -11,7 +11,7 @@ export default function ProfileBtn() {
   const auth = useAuth({})
 
   if (!auth.user) return (
-    <Button variant="ghost" size="icon" onClick={() => router.push('/login')}>
+    <Button className="rounded-full" variant="ghost" size="icon" onClick={() => router.push('/login')}>
       <PersonIcon/>
     </Button>
   )
