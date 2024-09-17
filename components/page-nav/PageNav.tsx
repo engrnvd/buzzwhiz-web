@@ -4,8 +4,8 @@ import CategoriesMenu from 'components/page-nav/CategoriesMenu'
 import ProfileBtn from 'components/ProfileBtn'
 
 export default function PageNav() {
-  return <div className={`px-4 py-3 border-b`}>
-    <Container>
+  return (
+    <Container className={`w-full px-4 py-3 border-b bg-background`}>
       <div className="flex justify-between items-center space-x-2">
         <div>
           <div className="md:hidden"><CategoriesMenu/></div>
@@ -14,5 +14,5 @@ export default function PageNav() {
         <ProfileBtn/>
       </div>
     </Container>
-  </div>
+  )
 }

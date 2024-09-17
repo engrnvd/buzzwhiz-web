@@ -24,7 +24,7 @@ export default function UserItemCardWrapper(
     title,
   }: Props
 ) {
-  const [maxRecords, setMaxRecords] = useState(10)
+  const [maxRecords, setMaxRecords] = useState(24)
   const [q, setQ] = useState('')
   const filteredItems = useMemo(() => items.filter(s => s.name.toLowerCase().includes(q.toLowerCase())), [q, items])
 
@@ -53,7 +53,7 @@ export default function UserItemCardWrapper(
         </div>
         {
           maxRecords < filteredItems.length &&
-            <ViewMoreBtn onClick={() => setMaxRecords(m => m + 10)}/>
+            <ViewMoreBtn onClick={() => setMaxRecords(m => m + 24)}/>
         }
       </div>
     </div>

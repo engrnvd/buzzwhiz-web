@@ -27,7 +27,7 @@ export default function CategorySelectorDesktop({ categories, className }: Props
     <NavigationMenu className={cn(className)}>
       <NavigationMenuList
         ref={listRef}
-        className="overflow-x-hidden w-[98vw] max-w-[1217px] justify-start py-3 scroll-smooth">
+        className="overflow-x-hidden w-[92vw] max-w-[1217px] justify-start py-3 scroll-smooth">
         {
           categories.map((category) => (
             <NavigationMenuItem key={category.id}>
@@ -37,7 +37,7 @@ export default function CategorySelectorDesktop({ categories, className }: Props
                     <>
                       <NavigationMenuTrigger>{category.name}</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <div className="w-[96vw] max-w-[1217px] flex items-center justify-center p-8">
+                        <div className="w-[92vw] max-w-[1217px] flex items-center justify-center p-8">
                           <div className="w-96 grid grid-cols-2 gap-4">
                             {
                               category.categories.map(subCat => (

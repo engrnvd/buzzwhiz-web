@@ -20,7 +20,7 @@ export default function RootLayout(
   }>) {
   return (
     <html lang="en">
-    <body className={`${inter.className} antialiased`}>
+    <body className={`${inter.className} antialiased bg-muted`}>
     <div className="flex flex-col min-h-screen">
       <PageNav/>
       <main className="flex flex-col flex-grow w-full">
